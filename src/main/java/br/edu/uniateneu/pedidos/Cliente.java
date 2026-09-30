@@ -9,6 +9,9 @@ public class Cliente {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome do cliente e obrigatorio");
         }
+        if (email == null || !email.contains("@") || email.startsWith("@") || email.endsWith("@")) {
+            throw new IllegalArgumentException("E-mail invalido");
+        }
         this.nome = nome;
         this.email = email;
     }
