@@ -23,4 +23,10 @@ class CalculadoraDeDescontoTest {
     void descontoDeCincoPorCentoAcimaDoLimite() {
         assertEquals(0, calculadora.calcular(new BigDecimal("200")).compareTo(new BigDecimal("10.00")));
     }
+
+    @Test
+    void descontoDeDezPorCentoNaFaixaAlta() {
+        assertEquals(0, calculadora.calcular(new BigDecimal("500")).compareTo(new BigDecimal("50.00")));
+        assertEquals(0, calculadora.calcular(new BigDecimal("1000")).compareTo(new BigDecimal("100.00")));
+    }
 }
