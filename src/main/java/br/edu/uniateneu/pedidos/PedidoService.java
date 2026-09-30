@@ -34,4 +34,12 @@ public class PedidoService {
     public List<Pedido> listar() {
         return List.copyOf(pedidos);
     }
+
+    public BigDecimal totalGeral() {
+        BigDecimal total = BigDecimal.ZERO;
+        for (Pedido pedido : pedidos) {
+            total = total.add(pedido.getValor());
+        }
+        return total;
+    }
 }
