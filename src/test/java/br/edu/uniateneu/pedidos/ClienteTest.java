@@ -18,4 +18,9 @@ class ClienteTest {
     void nomeEmBrancoLancaExcecao() {
         assertThrows(IllegalArgumentException.class, () -> new Cliente(" ", "ana@exemplo.local"));
     }
+
+    @Test
+    void emailSemArrobaLancaExcecao() {
+        assertThrows(IllegalArgumentException.class, () -> new Cliente("Ana", "anaexemplo.local"));
+    }
 }
