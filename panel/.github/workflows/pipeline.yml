@@ -1,0 +1,18 @@
+name: pipeline
+on: [push]
+jobs:
+  verificacao:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: mvn -B clean verify
+      - run: >
+          mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          -Dsonar.projectKey=pedidos-${{ github.ref_name }}-a
+          -Dsonar.host.url=http://localhost:9000
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.qualitygate.wait=true
